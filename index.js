@@ -7,7 +7,11 @@
  * trimProperties({ name: '  jane  ' }) // returns a new object { name: 'jane' }
  */
 function trimProperties(obj) {
-  // ✨ implement
+  const newObj = {};
+  for(let property in obj) {
+    newObj[property] = property.trim();
+  }
+  return newObj;
 }
 
 /**
@@ -19,7 +23,10 @@ function trimProperties(obj) {
  * trimPropertiesMutation({ name: '  jane  ' }) // returns the object mutated in place { name: 'jane' }
  */
 function trimPropertiesMutation(obj) {
-  // ✨ implement
+  for(let prop in obj) {
+    obj[prop] = obj[prop].trim();
+  }
+  return obj;
 }
 
 /**
@@ -31,7 +38,13 @@ function trimPropertiesMutation(obj) {
  * findLargestInteger([{ integer: 1 }, { integer: 3 }, { integer: 2 }]) // returns 3
  */
 function findLargestInteger(integers) {
-  // ✨ implement
+  let largest = integers[0].integer;
+  for(const element of integers) {
+    if(element.integer > largest) {
+      largest = element.integer;
+    }
+  }
+  return largest;
 }
 
 class Counter {
@@ -40,7 +53,7 @@ class Counter {
    * @param {number} initialNumber - the initial state of the count
    */
   constructor(initialNumber) {
-    // ✨ initialize whatever properties are needed
+    this.counter = initialNumber;
   }
 
   /**
@@ -56,7 +69,13 @@ class Counter {
    * counter.countDown() // returns 0
    */
   countDown() {
-    // ✨ implement
+    if(this.counter === 0) {
+      return 0;
+    } else {
+      const currentCounter = this.counter;
+      this.counter--;
+      return currentCounter;
+    }
   }
 }
 
@@ -65,7 +84,8 @@ class Seasons {
    * [Exercise 5A] Seasons creates a seasons object
    */
   constructor() {
-    // ✨ initialize whatever properties are needed
+    this.seasonsArray = ['spring', 'summer', 'fall', 'winter'];
+    this.currentSeason = 0;
   }
 
   /**
@@ -81,7 +101,12 @@ class Seasons {
    * seasons.next() // returns "summer"
    */
   next() {
-    // ✨ implement
+    if(this.currentSeason === 3) {
+      this.currentSeason = 0;
+    } else {
+      this.currentSeason++;
+    }
+    return this.seasonsArray[this.currentSeason];
   }
 }
 
@@ -93,6 +118,7 @@ class Car {
    * @param {number} mpg - miles the car can drive per gallon of gas
    */
   constructor(name, tankSize, mpg) {
+    this.name = name;
     this.odometer = 0 // car initilizes with zero miles
     this.tank = tankSize // car initiazes full of gas
     // ✨ initialize whatever other properties are needed
@@ -112,7 +138,8 @@ class Car {
    * focus.drive(200) // returns 600 (ran out of gas after 100 miles)
    */
   drive(distance) {
-    // ✨ implement
+    this.odometer += distance;
+    return this.odometer;
   }
 
   /**
