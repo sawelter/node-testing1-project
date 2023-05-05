@@ -134,16 +134,6 @@ beforeEach(() => {
     focus.drive(100);
     expect(focus.odometer).toEqual(630);
     expect(focus.tank).toEqual(0);
-
-    // expect(focus.odometer).toEqual(600);
-    // expect(focus.tank).toEqual(0);
-    // focus.drive(30);
-    // expect(focus.odometer).toEqual(600);
-    // expect(focus.tank).toEqual(0);
-    // focus.refuel(20);
-    // expect(focus.tank).toEqual(20);
-    // focus.drive(630);
-    // expect(focus.odometer).to
   })
   test('[18] adding fuel to a full tank has no effect', () => {
     focus.refuel(20);
@@ -155,6 +145,14 @@ beforeEach(() => {
 })
 
 describe('[Exercise 7] isEvenNumberAsync', () => {
-  // test('[19] resolves true if passed an even number', () => {})
-  // test('[20] resolves false if passed an odd number', () => {})
+  test('[19] resolves true if passed an even number', async () => {
+    const input = 4;
+    const result = await utils.isEvenNumberAsync(input);
+    expect(result).toBeTruthy();
+  })
+  test('[20] resolves false if passed an odd number', async () => {
+    const input = 3;
+    const result = await utils.isEvenNumberAsync(input);
+    expect(result).toBeFalsy();
+  })
 })
