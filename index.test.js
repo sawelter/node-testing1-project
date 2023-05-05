@@ -119,9 +119,39 @@ beforeEach(() => {
     focus.drive(30);
     expect(focus.odometer).toEqual(50);
   })
-  // test('[16] driving the car uses gas', () => {})
-  // test('[17] refueling allows to keep driving', () => {})
-  // test('[18] adding fuel to a full tank has no effect', () => {})
+  test('[16] driving the car uses gas', () => {
+    focus.drive(30);
+    expect(focus.odometer).toEqual(30);
+    expect(focus.tank).toEqual(19);
+    focus.drive(90);
+    expect(focus.tank).toEqual(16);
+  })
+  test('[17] refueling allows to keep driving', () => {
+    focus.drive(630);
+    expect(focus.odometer).toEqual(600);
+    expect(focus.tank).toEqual(0);
+    focus.refuel(1);
+    focus.drive(100);
+    expect(focus.odometer).toEqual(630);
+    expect(focus.tank).toEqual(0);
+
+    // expect(focus.odometer).toEqual(600);
+    // expect(focus.tank).toEqual(0);
+    // focus.drive(30);
+    // expect(focus.odometer).toEqual(600);
+    // expect(focus.tank).toEqual(0);
+    // focus.refuel(20);
+    // expect(focus.tank).toEqual(20);
+    // focus.drive(630);
+    // expect(focus.odometer).to
+  })
+  test('[18] adding fuel to a full tank has no effect', () => {
+    focus.refuel(20);
+    expect(focus.tank).toEqual(20);
+    focus.drive(300);
+    focus.refuel(20);
+    expect(focus.tank).toEqual(20);
+  })
 })
 
 describe('[Exercise 7] isEvenNumberAsync', () => {
